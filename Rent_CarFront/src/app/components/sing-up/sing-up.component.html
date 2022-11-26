@@ -1,0 +1,75 @@
+<app-header></app-header>
+<div class="container" style="padding: 10px;">
+<div class="main-container" style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
+
+  <div class="gradient-custom-3">
+
+  <div class="card-container m-auto">
+          <div class="card" style="border-radius: 30px; text-align:center;">
+
+            <div class="card-body">
+              <img src="/assets/img/logo.png" alt="" width="100" height="50">
+              <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+
+              <form>
+
+                <div class="form-outline">
+                  <label class="form-label">Your Name</label>
+                  <input type="text" class="form-control form-control-lg" [(ngModel)]='client.name' name="name">
+                </div>
+
+                <div class="form-outline">
+                  <label class="form-label">Your Email</label>
+                  <input type="email" class="form-control form-control-lg" placeholder="example@gmail.com" [(ngModel)]='client.email' name="email">
+                </div>
+
+                <div class="form-outline">
+                  <label class="form-label">Address</label>
+                  <input type="address" class="form-control form-control-lg" [(ngModel)]='client.address' name="address">
+                </div>
+
+                <div class="form-outline">
+                  <label class="form-label">Password</label>
+                  <input type="password" class="form-control form-control-lg" [(ngModel)]='client.password' name="password">
+                </div>
+
+                <div class="form-check d-flex justify-content-center mb-5">
+                  <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3cg" />
+                  <label class="form-check-label" for="form2Example3g">
+                    I agree all statements in <a href="#!" class="text-body"><u>Terms of service</u></a>
+                  </label>
+                </div>
+
+                <div  *ngIf="message" class="alert alert-success d-flex align-items-center" role="alert">
+                  <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+                  <div>
+                    {{message}}
+                  </div>
+                </div>
+                <div *ngIf="messageError" class="alert alert-danger d-flex align-items-center" role="alert">
+                  <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+                  <div>
+                    {{messageError}}
+                  </div>
+                </div>
+
+                <div class="d-flex justify-content-center">
+                  <button type="button"
+                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-white" (click)="addClient()" [disabled]="!client.name || !client.email || !client.address || !client.password">Register</button>
+                </div>
+
+                <p class="text-center text-muted mt-5 mb-0 fw-bold text-body">Have already an account?
+                  <a href="#!">
+                    <u>Login here</u>
+                  </a>
+                  <p class="mt-5 mb-3 text-muted">© 2017–2022
+                </p>
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+</div>
+<app-footer></app-footer>
