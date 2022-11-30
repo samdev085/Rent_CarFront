@@ -12,6 +12,7 @@ import { ClientService } from 'src/app/services/client.service';
 export class SingUpComponent implements OnInit {
 
   client!: Client
+  terms:boolean=false
   message!: string
   messageError!: string
 
@@ -35,6 +36,14 @@ export class SingUpComponent implements OnInit {
       this.message =""
       this.router.navigate(['login']);
     }, 2000);
+  }
+
+  onSelect(event: any){
+    if ( event.target.checked ) {
+       this.terms = true
+    }
+    else
+    this.terms=false
   }
 
 }

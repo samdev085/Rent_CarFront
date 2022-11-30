@@ -1,9 +1,9 @@
 export class Client {
-    id?:number
-    name!:string
+    id?:string
+    userName!:string
     email!:string
+    phoneNumber!:string
     address!:string
     password!:string
-    status!:number
-    lastLog!:Date
+    status?:number
   }

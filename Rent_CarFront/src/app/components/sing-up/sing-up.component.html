@@ -15,12 +15,17 @@
 
                 <div class="form-outline">
                   <label class="form-label">Your Name</label>
-                  <input type="text" class="form-control form-control-lg" [(ngModel)]='client.name' name="name">
+                  <input type="text" class="form-control form-control-lg" [(ngModel)]='client.userName' name="name">
                 </div>
 
                 <div class="form-outline">
                   <label class="form-label">Your Email</label>
                   <input type="email" class="form-control form-control-lg" placeholder="example@gmail.com" [(ngModel)]='client.email' name="email">
+                </div>
+
+                <div class="form-outline">
+                  <label class="form-label">Phone Number</label>
+                  <input type="phone" class="form-control form-control-lg" [(ngModel)]='client.phoneNumber' name="phone">
                 </div>
 
                 <div class="form-outline">
@@ -34,10 +39,8 @@
                 </div>
 
                 <div class="form-check d-flex justify-content-center mb-5">
-                  <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3cg" />
-                  <label class="form-check-label" for="form2Example3g">
-                    I agree all statements in <a href="#!" class="text-body"><u>Terms of service</u></a>
-                  </label>
+                  <input class="form-check-input me-2" type="checkbox" (change)='onSelect($event)' />
+                  <label class="form-check-label"> I agree all statements in <a class="text-body"><u>Terms of service</u></a></label>
                 </div>
 
                 <div  *ngIf="message" class="alert alert-success d-flex align-items-center" role="alert">
@@ -55,11 +58,11 @@
 
                 <div class="d-flex justify-content-center">
                   <button type="button"
-                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-white" (click)="addClient()" [disabled]="!client.name || !client.email || !client.address || !client.password">Register</button>
+                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-white" (click)="addClient()" [disabled]=" terms===false || !client.userName || !client.email || !client.phoneNumber || !client.address || !client.password">Register</button>
                 </div>
 
                 <p class="text-center text-muted mt-5 mb-0 fw-bold text-body">Have already an account?
-                  <a href="#!">
+                  <a routerLink="/login">
                     <u>Login here</u>
                   </a>
                   <p class="mt-5 mb-3 text-muted">© 2017–2022

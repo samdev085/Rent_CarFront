@@ -15,7 +15,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class ClientService {
-  url = 'https://localhost:44394/api/Clients';  // URL to web api
+  url = 'https://localhost:44325/api';  // URL to web api
 
 
   authentication = false
@@ -29,29 +29,29 @@ export class ClientService {
 
 
   getClients(): Observable<Client[]> {
-    return this.http.get<Client[]>(this.url)
+    return this.http.get<Client[]>(`${this.url}/ListClients`)
   }
 
-  getClient(clientId: number): Observable<Client> {
-    const apiUrl = `${this.url}/${clientId}`;
-    return this.http.get<Client>(apiUrl);
+  getClient(Id: string): Observable<Client> {
+    //const apiUrl = `${this.url}/${clientId}`;
+    return this.http.get<Client>(`${this.url}/GetUser/${Id}`);
   }
 
   addClient(client: Client): Observable<Client> {
-    return this.http.post<Client>(this.url, client, httpOptions);
+    return this.http.post<Client>(`${this.url}/AddUser`, client, httpOptions);
   }
 
-  updateClient(client: Client): Observable<any> {
-    return this.http.put<Client>(this.url, client, httpOptions);
+  updateClient(client: Client): Observable<Client> {
+    return this.http.put<Client>(`${this.url}/UpdateUser`, client, httpOptions);
   }
 
-  deleteClient(clientId: number): Observable<any> {
-    const apiUrl = `${this.url}/${clientId}`;
-    return this.http.delete<number>(apiUrl, httpOptions);
+  deleteClient(clientId: string): Observable<any> {
+    //const apiUrl = `${this.url}/${clientId}`;
+    return this.http.delete<string>(`${this.url}/DeleteUser/${clientId}`);
   }
 
   login(loginClient: Login): Observable<Client> {
-    return this.http.post<Client>(`${this.url}/login`, loginClient)
+    return this.http.post<Client>(`${this.url}/Login`, loginClient)
   }
 
 }
